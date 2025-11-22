@@ -1,0 +1,349 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins',sans-serif;
+    box-sizing: border-box;
+}
+main{
+    margin: 20px;
+    padding: 10px;
+}
+.brief-section h1,p{
+    text-align: center;
+}
+h1,h2,h3,h4{
+    font-weight: bold;
+}
+h1{
+    font-size: 30px !important;
+}
+h2{
+    font-size: 26px !important;
+}
+h3{
+    font-size: 18px !important;
+}
+
+.brief-section p{
+    margin: 20px 0;
+    font-size: 20px;
+}
+.crowdfunding{
+    padding: 20px;
+    background-color:rgba(209, 232, 241, 0.4);
+}
+.crowdfunding h1{
+    text-align: center;
+    margin: 40px;
+}
+.explain{
+    display: flex;
+    justify-content: space-between;
+}
+.explain p{
+    width: 50%;
+    text-align: justify;
+    font-size: 1.5vw;
+
+}
+.video-container {
+  position: relative;
+  width: 50%; 
+  height: 50vh;
+  overflow: hidden;
+  margin-left: 20px;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.start-fundraiser{
+    margin-top: 40px;
+    height: 30vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.3s ease-in, transform 0.4s ease-in;
+}
+.start-fundraiser.visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+.start-fundraiser h2{
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.fundraising-steps ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.fundraising-steps li {
+  flex: 1 1 200px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.fundraising-steps li:nth-child(1),.fundraising-steps li:nth-child(3),.fundraising-steps li:nth-child(5){
+    background-color: #c5e99d;
+}
+.fundraising-steps li:nth-child(2),.fundraising-steps li:nth-child(4){
+    background-color: #bddddc;
+}
+.fundraising-steps li:hover{
+    transform: scale(1.1);
+}
+.fundraising-steps li i {
+  display: block;
+  font-size: 2rem;
+  color: rgb(184, 181, 181); 
+  margin: 10px 0;
+}
+.donation-info{
+   margin-top: 15vh;
+   text-align: center;
+}
+.donation-info h2{
+    margin-bottom: 30px;
+}
+.timeline{
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+}
+.timeline::after{
+    content: "";
+    position: absolute;
+    width: 4px;
+    background: #0A5251;
+   top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  border-radius: 5px;
+  z-index: 1;
+
+}
+.timeline-step {
+  position: relative;
+  width: 50%;
+  padding: 20px;
+  z-index: 2;
+}
+.timeline-step .content {
+  background: rgba(199,232,159,0.3);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: left;
+  min-height: 180px;   
+  display: flex;       
+  flex-direction: column;
+  justify-content: center; 
+}
+.timeline-step h3{
+    text-align: center;
+}
+.timeline-step.right {
+  left: 50%;
+  transform: translateX(30px);
+  opacity: 0;
+  transition: opacity 0.3s ease-in, transform 0.4s ease-in;
+}
+.timeline-step.left {
+  left: 0;
+  text-align: right;
+  transform: translateX(-30px);
+  opacity: 0;
+transition: opacity 0.3s ease-in, transform 0.4s ease-in;
+}
+.timeline-step.left.show,.timeline-step.right.show{
+    opacity: 1;
+    transform: translateX(0);
+}
+.timeline-step::before {
+  content: attr(data-step); 
+  position: absolute;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #bddddc;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fff;
+  z-index: 2;
+
+}
+.timeline-step.right::before {
+  left: -18px;
+}
+
+.timeline-step.left::before {
+  right: -18px;
+}
+
+.platform-benefits h2{
+    text-align: center;
+    margin: 20px;
+}
+.benefit-cards{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+    flex:1 1 200px;
+    background-color:rgba(191,223,222,0.4);
+    margin: 20px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #0A5251;
+    transition: transform 0.3s ease;
+}
+.card:hover{
+    transform: translateY(-8px);
+}
+.benefit-icon{
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0A5251;
+}
+.cta {
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 120px;
+}
+.cta h2{
+    margin: 15px;
+}
+.cta p{
+    font-weight: bold;
+    color: #0A5251;
+}
+.cta a {
+    /* display: inline-block; */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    margin: 30px;
+    width: 30%;
+    background-color: #c5e99d;
+    border: none;
+    border-radius: 5px;
+     text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+     color: white;
+     transition: all 0.3s ease-out;
+
+}
+
+.cta a:hover{
+    background-color: white;
+  border: 2px solid #c5e99d;
+  color: #c5e99d;
+}
+@media (max-width:1196px) {
+    .start-fundraiser{
+        height: auto;
+    }
+    .fundraising-steps ul{
+        grid-template-columns: repeat(3,1fr);
+    }
+
+}
+@media (max-width: 762px){
+    .benefit-cards,.fundraising-steps ul{
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+    .timeline-step.right{
+        left: 0;
+    }
+    .timeline-step{
+        width: 100%;
+    }
+    .timeline::after{
+        display: none;
+    }
+    .timeline-step.left::before{
+        display: none;
+    }
+    .timeline-step.right::before{
+        display: none;
+    }
+    .explain{
+        flex-direction: column;
+        gap: 30px;
+        height: auto;
+    }
+    .explain p{
+        width: 100%;
+        font-size: 2vw;
+    }
+    .video-container{
+        width: 100%;
+        margin-right: 20px;
+    }
+    
+}
+@media (max-width:698px) {
+    .cta button{
+        font-size: 2vw;
+
+    }
+}
+@media (max-width:562px) {
+    iframe{
+        height: auto;
+        width: auto;
+    }
+    .explain p{
+        font-size: 2.5vw;
+    }
+    .benefit-cards{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .cta{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .cta button{
+        display: block;
+        width: 100%;
+        font-size: 3vw;
+    }
+
+}

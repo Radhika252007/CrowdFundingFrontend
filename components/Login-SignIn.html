@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Login</title>
+  <link rel="stylesheet" href="/css/header.css">
+  <script src="/js/header.js" defer></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/css/login-sign.css">
+  <script src="/js/login-signin.js" defer></script>
+  <link rel="shortcut icon" href="/assets/nature.png" type="image/x-icon" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .step {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .input-box input,
+    .input-box textarea {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+ <header>
+  <div class="web-logo">
+    <img src="/assets/logo-transparent-svg.svg" alt="logo" onclick="window.location.href= '../index.html'"/>
+  </div>
+
+  <nav>
+    <ul>
+      <li class="nav-link"><a href="../index.html">Home</a></li>
+      <li class="nav-link"><a href="/components/donate.html">Browse Fundraiser</a></li>
+      <li class="nav-link"><a href="/components/How_it_works.html">How it Works</a></li>
+      <li class="nav-link"><a href="/components/About.html">About Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-right">
+    <!-- User Section -->
+    <div class="user-section" id="user-section" style="display:none;">
+      <img id="user-logo" src="" alt="User Logo" onclick="window.location.href='/components/UserProfile.html'" />
+      <span id="user-name"></span>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div class="login-small">
+      <button class="dropbtn" id="login-btn"><i class="fas fa-bars"></i></button>
+      <div class="dropdown-content" id="content">
+        <div class="login-s">
+          <a href="#" onclick="showLoginPage('login')">Login</a>
+          <a href="#" onclick="showLoginPage('signup')">Sign Up</a>
+        </div>
+        <div class="nav-small">
+          <ul>
+            <li class="nav-link"><a href="../index.html">Home</a></li>
+            <li class="nav-link"><a href="/components/donate.html">Browse Fundraiser</a></li>
+            <li class="nav-link"><a href="/components/How_it_works.html">How it Works</a></li>
+            <li class="nav-link"><a href="/components/About.html">About Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop login buttons -->
+    <div class="login-btn" id="login-buttons">
+      <button onclick="showLoginPage('login')">Log In</button>
+      <button onclick="showLoginPage('signup')">Sign Up</button>
+    </div>
+  </div>
+</header>
+  <main>
+    <section class="container">
+      <section class="form-section login">
+        <form method="post">
+          <h1>Login</h1>
+          <div class="input-box">
+            <input type="email" placeholder="email" id="email" required>
+            <i class='bx bxs-user'></i>
+          </div>
+          <div class="input-box">
+            <input type="password" placeholder="Password" id="password" required>
+            <i class='bx bxs-lock-alt'></i>
+          </div>
+          <div class="forgot-link">
+            <a href="#">Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn" id="login-sub">Login</button>
+          <p>or login with social platforms</p>
+          <div class="social-icons">
+            <a href="#"><i class='bx bxl-google'></i></a>
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-github'></i></a>
+            <a href="#"><i class='bx bxl-linkedin'></i></a>
+          </div>
+        </form>
+      </section>
+      <section class="form-section register">
+        <form id="multi-step-form registrationForm" enctype="multipart/form-data">
+          <h1>Registration</h1>
+
+          <div
+            class="relative mb-6 after:absolute after:top-1/2 after:left-8 after:right-8 after:block after:h-[1.5px] after:-translate-y-1/2 after:rounded-full after:bg-gray-300">
+            <ol class="relative z-10 flex justify-between text-sm font-medium text-gray-600">
+              <li class="step-item flex items-center gap-2 bg-white p-2">
+                <span
+                  class="step-circle size-6 rounded-full bg-blue-500 text-center text-[10px]/6 font-bold text-white">1</span>
+              </li>
+              <li class="step-item flex items-center gap-2 bg-white p-2">
+                <span class="step-circle size-6 rounded-full bg-gray-100 text-center text-[10px]/6 font-bold">2</span>
+              </li>
+              <li class="step-item flex items-center gap-2 bg-white p-2">
+                <span class="step-circle size-6 rounded-full bg-gray-100 text-center text-[10px]/6 font-bold">3</span>
+              </li>
+            </ol>
+          </div>
+
+          <div class="step" id="step-1">
+            <div class="input-box">
+              <input type="text" id="username" placeholder="Full Name" name="name" required>
+              <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+              <input type="email" id="reg-email" placeholder="Email" name="email" required>
+              <i class='bx bxs-envelope'></i>
+            </div>
+            <button type="button" class="btn next-step w-full mt-4">Next</button>
+          </div>
+
+          <div class="step hidden" id="step-2">
+            <div class="input-box">
+              <input type="password" id="reg-password" placeholder="Password" name="password" required>
+              <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="input-box">
+              <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+              <i class='bx bxs-lock'></i>
+            </div>
+            <div class="input-box">
+              <input type="file" id="profile-image" accept="image/*" name="profileImage" placeholder="Profile Image" required >
+              <i class='bx bxs-image'></i>
+            </div>
+            <div class="flex justify-between mt-4">
+              <button type="button" class="btn prev-step">Back</button>
+              <button type="button" class="btn next-step">Next</button>
+            </div>
+          </div>
+
+          <div class="step hidden" id="step-3">
+            <div class="input-box">
+              <input type="date" id="dob" name="dob" required>
+              <i class='bx bxs-calendar'></i>
+            </div>
+            <div class="input-box">
+              <textarea id="about" placeholder="About you"  name="about_user" rows="3" class="w-full border rounded-lg p-2"></textarea>
+            </div>
+            <div class="input-box">
+              <input type="text" id="location"  name="location" placeholder="Location">
+            </div>
+            <div class="flex justify-between mt-3">
+              <button type="button" class="btn prev-step">Back</button>
+              <button type="submit" class="btn">Register</button>
+            </div>
+          </div>
+        </form>
+
+      </section>
+
+      <section class="toggle-box">
+        <div class="toggle-panel toggle-left">
+          <h1>Hello, Welcome!</h1>
+          <p>Don't have an account?</p>
+          <button class="btn register-btn">Register</button>
+        </div>
+
+        <div class="toggle-panel toggle-right">
+          <h1>Welcome Back!</h1>
+          <p>Already have an account?</p>
+          <button class="btn log-btn">Login</button>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+
+</html>

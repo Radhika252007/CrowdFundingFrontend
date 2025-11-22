@@ -1,0 +1,517 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight: bold !important;
+    text-align: center;
+    margin-bottom: 30px !important;
+    
+}
+body {
+    color: #4d4d4d;
+}
+
+main {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    display: flex;
+    width: 75%;
+    margin-bottom: 60px;
+    justify-content: center;
+}
+
+.about-camp {
+    width: 70%;
+    box-shadow: 0 2px 6px rgba(34, 34, 34, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.campaign-headers {
+    display: flex;
+    gap: 30px;
+    border-bottom: 3.5px solid rgba(191,227,225,1);
+    height: 50px;
+    align-items: center;
+}
+
+.camp-section {
+    cursor: pointer;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.donation-details {
+    padding: 20px;
+}
+
+.about article {
+    font-size: 17px;
+}
+
+.update-btn {
+    width: 50%;
+    height: 50px;
+    border: none;
+    box-shadow: 0 2px 6px rgba(34, 34, 34, 0.3);
+    position: relative;
+    margin: 30px;
+    left: 23%;
+    background-color: white;
+}
+
+.share-btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.s-btn {
+    width: 30%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+}
+
+.whatsapp-btn {
+    background-color: rgb(37, 211, 102);
+    color: #f9f9f9;
+    transition: all 0.3s;
+
+}
+.whatsapp-btn:hover{
+    background-color: rgba(9, 217, 85, 0.821);
+}
+
+.facebook-btn {
+    background-color: rgb(6, 66, 144);
+    color: #f9f9f9;
+}
+
+.contribute-btn {
+    background-color: rgb(171, 224, 221);
+    color: #f9f9f9;
+
+}
+
+.main-donation-btn {
+    display: block;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: #c5e99f;
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease-in;
+}
+.main-donation-btn:hover{
+    background-color: #b4e77e;
+}
+
+.payment-types {
+    font-size: 9px;
+    width: 70px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 2px 6px rgba(34, 34, 34, 0.3);
+}
+
+.donation-ways {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    gap: 30px;
+}
+
+.forward-btn {
+    width: 100%;
+    height: 60px;
+    background-color: rgb(6, 66, 144);
+    border: none;
+    color: white;
+}
+
+.amount-collected {
+    font-size: 34px;
+}
+
+.fundraiser-amount {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.total-amount {
+    color: gray;
+}
+
+.additional-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+}
+
+.additional-info span {
+    font-size: 16px;
+}
+
+.person-detail {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 20vh;
+    background-color: rgb(240, 240, 240);
+}
+
+.person-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+    top: 16px;
+}
+
+.person-logo {
+    width: 30%;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.person-data p {
+    font-size: 14px;
+}
+
+.person-data {
+    width: 70%;
+    margin-top: 30px;
+}
+
+.person-data span {
+    font-weight: bold;
+}
+
+.campaigner {
+    border-bottom: 1px solid gray;
+}
+
+.raiser-info {
+    box-shadow: 0 2px 6px rgba(34, 34, 34, 0.3);
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.contact-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background-color: #c5e99f;
+    border-radius: 2px;
+    padding: 10px;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+
+}
+.contact-btn:hover{
+    background-color: #b4e77e;
+}
+.person-name {
+    color:#9ce4cf;
+}
+
+.updates {
+    display: none;
+}
+.update-box h2{
+    margin-top: 20px;
+}
+.fund-bar {
+    width: 100%;
+    height: 8px;
+    background-color: darkgray;
+    border-radius: 10px;
+}
+
+.fund-bar-fill {
+    width: 70%;
+    background-color: rgba(191,227,225,1);
+    height: 100%;
+    border-radius: 10px;
+}
+
+.camp-image {
+    height: 40vh;
+    background-color: gray;
+    background-image: url(/Frontend/assets/photo-1574097656146-0b43b7660cb6.avif);
+    background-size: cover;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+.all-images {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 15px;
+    padding: 10px;
+}
+
+.all-images img {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    object-fit: cover;
+
+}
+
+.all-images::-webkit-scrollbar {
+    display: none;
+}
+
+.all-images {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.post-info {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.post-img img {
+    width: 35px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+
+.post-id {
+    color: rgb(98, 98, 254);
+    font-weight: bold;
+}
+.campaign-heading{
+    margin: 15px;
+    font-size: 2.5vw;
+}
+.comments-section {
+  margin-bottom: 100px;
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.comments-section h2 {
+  margin-bottom: 10px !important;
+  font-size: 1.5rem;
+  color: #0a5251;
+}
+
+.comment-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.comment-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#commentText{
+  resize: none;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  min-height: 70px;
+  margin-bottom: 10px !important;
+  width: 90%;
+}
+
+.comment-input button {
+  width: 120px;
+  padding: 8px 15px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #0a5251;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: background 0.3s;
+}
+
+.comment-input button:hover {
+  background-color: #05655b;
+}
+
+#commentsList .comment-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#commentsList .comment-item:last-child {
+  border-bottom: none;
+}
+
+#commentsList .comment-item b {
+  color: #0a5251;
+}
+
+#commentsList .comment-item .date {
+  color: #888;
+  font-size: 0.85rem;
+  margin-left: 5px;
+}
+/* ----------------- Share Modal CSS ----------------- */
+#shareModal {
+  display: none; /* hidden by default */
+  position: fixed;
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+  font-family: Arial, sans-serif;
+}
+
+#shareModal .modal-content {
+  background-color: #fff;
+  margin: 10% auto; 
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+#shareModal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+#shareModal .modal-header h2 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #0A5251;
+}
+
+#shareModal .close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #555;
+}
+
+#shareModal .share-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#shareModal .share-options button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+#shareModal .facebook-share {
+  background-color: #1877f2;
+  color: #fff;
+}
+
+#shareModal .facebook-share:hover {
+  background-color: #145dbf;
+}
+
+#shareModal .whatsapp-share {
+  background-color: #25d366;
+  color: #fff;
+}
+
+#shareModal .whatsapp-share:hover {
+  background-color: #1da851;
+}
+
+#shareModal .copy-link-btn {
+  background-color: #eee;
+  color: #333;
+}
+
+#shareModal .copy-link-btn:hover {
+  background-color: #ddd;
+}
+
+/* Input link field inside modal */
+#shareModal input.link-input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+@media (max-width:850px) {
+    .main-container{
+        flex-direction: column;
+        width: 90%;
+    }
+    .about-camp{
+        width: 100%;
+    }
+    .donation-details{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .fundraiser-amount,.additional-info,.raiser-info{
+        width: 100%;
+    }
+    .main-donation-btn{
+        width: 70%;
+    }
+
+}
