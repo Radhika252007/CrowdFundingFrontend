@@ -1,41 +1,29 @@
-const BACKEND_URL = "https://crowdfundingbackend-1.onrender.com"; 
+const BACKEND_URL = "https://crowdfundingbackend-1.onrender.com";
 const topContainer = document.querySelector(".project-container");
 const lowerContainer = document.querySelector(".lower-project-container");
-const projectContainer = document.querySelector(".project");
-function showSkeletons(container, count = 6) {
-  container.innerHTML = "";
-  for (let i = 0; i < count; i++) {
-    const skeleton = document.createElement("div");
-    skeleton.className = "skeleton-card";
-    skeleton.innerHTML = `
-      <div class="skeleton-img"></div>
-      <div class="skeleton-text"></div>
-      <div class="skeleton-bar"></div>
-      <div class="skeleton-small-text"></div>
-    `;
-    container.appendChild(skeleton);
-  }
-}
 
 function renderCampaigns(campaigns) {
-  console.log(campaigns)
+
+  topContainer.innerHTML = "";
+  if (lowerContainer) lowerContainer.innerHTML = "";
+
   if (!Array.isArray(campaigns) || campaigns.length === 0) {
-     projectContainer.innerHTML = "<h1 style='text-align : center; margin: 30px; font-size: 26px;color: #0A5251'>No campaigns found.</h1>";
-    if (lowerContainer) lowerContainer.innerHTML = "";
+    topContainer.innerHTML = "<h1 style='text-align:center; margin:30px; font-size:26px; color:#0A5251'>No campaigns found.</h1>";
     return;
   }
 
-  const today = new Date();
-  const filtered = campaigns.filter(
-    c => c.status === "Approved"
-  );
-  console.log(filtered)
+  const filtered = campaigns.filter(c => c.status?.trim().toLowerCase() === "approved");
+
+  if (filtered.length === 0) {
+    topContainer.
+    topContainer.innerHTML = "<h1 style='text-align:center; margin:30px; font-size:26px; color:#0A5251'>No campaigns found.</h1>";
+    return;
+  }
+
   const topCampaigns = filtered.slice(0, 6);
   const remainingCampaigns = filtered.slice(6);
 
-  // Render top campaigns
-  topContainer.innerHTML = "";
-  topCampaigns.forEach(campaign => {
+  function createCard(campaign) {
     const barFilled = (campaign.raised_amount / campaign.goal_amount) * 100;
     const card = document.createElement("div");
     card.className = "project-card";
@@ -51,39 +39,26 @@ function renderCampaigns(campaigns) {
       </div>
     `;
     card.addEventListener("click", () => {
-      window.location.href = `/components/Campaign_page.html?id=${campaign.campaign_id}`;
+      window.location.href = `/components/campaign_page.html?id=${campaign.campaign_id}`;
     });
+    return card;
+  }
+
+  topCampaigns.forEach(campaign => {
+    const card = createCard(campaign);
     topContainer.appendChild(card);
   });
 
   // Render remaining campaigns
   if (lowerContainer) {
-    lowerContainer.innerHTML = "";
-    const newRemainingCampaigns = remainingCampaigns.slice(0,6);
-    newRemainingCampaigns.forEach(campaign => {
-      const barFilled = (campaign.raised_amount / campaign.goal_amount) * 100;
-      const card = document.createElement("div");
-      card.className = "project-card";
-      card.innerHTML = `
-        <img src="${campaign.images?.[0] || "/assets/default.jpg"}" class="project-img" alt="campaign image" />
-        <p class="project-text">${campaign.title}</p>
-        <div class="fund-details">
-          <p><strong>${campaign.raised_amount}</strong> raised of ${campaign.goal_amount}</p>
-          <div class="fund-bar">
-            <div class="fund-bar-fill" style="width: ${barFilled}%;"></div>
-          </div>
-          <p class="donor-count">${campaign.noOfDonations} people have donated</p>
-        </div>
-      `;
-      card.addEventListener("click", () => {
-        window.location.href = `/components/Campaign_page.html?campaign_id=${campaign.campaign_id}`;
-      });
+    remainingCampaigns.slice(0, 6).forEach(campaign => {
+      const card = createCard(campaign);
       lowerContainer.appendChild(card);
     });
   }
 }
 
-// ------------------ Fetch Campaigns ------------------
+// ------------------ Fetch All Campaigns ------------------
 function fetchAllCampaigns() {
   fetch(`${BACKEND_URL}/api/campaigns`, { method: "GET", credentials: "include" })
     .then(res => res.json())
@@ -98,18 +73,18 @@ function fetchAllCampaigns() {
     });
 }
 
-function fetchCategoryCampaigns(type) {
-  fetch(`${BACKEND_URL}/api/campaigns/category/${encodeURIComponent(type)}`, { method: "GET", credentials: "include" })
+// ------------------ Fetch Category Campaigns ------------------
+function fetchCategoryCampaigns(category) {
+  fetch(`${BACKEND_URL}/api/campaigns/category/${encodeURIComponent(category)}`, { method: "GET", credentials: "include" })
     .then(res => res.json())
     .then(data => {
+      let campaigns = [];
       if (Array.isArray(data)) {
-        renderCampaigns(data);
-      } else if (data.message) {
-        topContainer.innerHTML = `<p>${data.message}</p>`;
-        if (lowerContainer) lowerContainer.innerHTML = "";
-      } else {
-        renderCampaigns([]);
+        campaigns = data;
+      } else if (data.campaigns && Array.isArray(data.campaigns)) {
+        campaigns = data.campaigns;
       }
+      renderCampaigns(campaigns);
     })
     .catch(err => {
       console.error("Error fetching category campaigns:", err);
@@ -126,17 +101,9 @@ categoryDivs.forEach(div => {
     div.classList.add("active-category");
 
     const category = div.querySelector("p").textContent.trim();
-
-// Show skeletons while fetching category campaigns
-showSkeletons(topContainer);
-if (lowerContainer) showSkeletons(lowerContainer);
-
-fetchCategoryCampaigns(category);
-
+    fetchCategoryCampaigns(category);
   });
 });
-// Show skeletons while fetching campaigns
-showSkeletons(topContainer);
-if (lowerContainer) showSkeletons(lowerContainer);
 
+// ------------------ Initial Load ------------------
 fetchAllCampaigns();

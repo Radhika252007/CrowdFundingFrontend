@@ -102,11 +102,19 @@ main {
     background-color: rgb(6, 66, 144);
     color: #f9f9f9;
 }
+.facebook-btn:hover{
+    background-color: rgb(5, 47, 103);
+    color: #f9f9f9;
+}
 
 .contribute-btn {
-    background-color: rgb(171, 224, 221);
+    background-color: #0A5251;
     color: #f9f9f9;
 
+}
+.contribute-btn:hover{
+    background-color: #05655b;
+    color: white;
 }
 
 .main-donation-btn {

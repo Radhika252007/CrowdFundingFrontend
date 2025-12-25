@@ -89,7 +89,7 @@ input[type="checkbox"] {
 .donation-sub-btn {
   height: 50px;
   border: none;
-  background-color: #bdddda;
+  background-color: #0A5251;
   border-radius: 5px;
   font-size: 18px;
   color: white;
@@ -99,7 +99,7 @@ input[type="checkbox"] {
 }
 
 .donation-sub-btn:hover {
-  background-color: #a4dad5;
+  background-color: #66afa8;
 }
 
 

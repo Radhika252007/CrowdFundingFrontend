@@ -1,7 +1,49 @@
 import { startTokenRefresh } from './tokenManager.js';
 startTokenRefresh();
+
+let allImages = [];   // max 5
+let allFiles = [];    // max 3
+
 const form = document.getElementById('campaignForm');
 
+/* ------------------------------
+   HANDLE IMAGES (max 5)
+--------------------------------*/
+const imageInput = document.getElementById('camp-images');
+
+imageInput.addEventListener("change", () => {
+    for (let file of imageInput.files) {
+        if (allImages.length < 5) {
+            allImages.push(file);
+        } else {
+            alert("You can upload a maximum of 5 images.");
+            break;
+        }
+    }
+    console.log("Images =", allImages.length, allImages);
+});
+
+/* ------------------------------
+   HANDLE FILES (max 3)
+--------------------------------*/
+const fileInput = document.getElementById('camp-files');
+
+fileInput.addEventListener("change", () => {
+    for (let file of fileInput.files) {
+        if (allFiles.length < 2) {
+            allFiles.push(file);
+        } else {
+            alert("You can upload a maximum of 2 files.");
+            break;
+        }
+    }
+    console.log("Files =", allFiles.length, allFiles);
+});
+
+
+/* ------------------------------
+   FORM SUBMIT
+--------------------------------*/
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -18,13 +60,24 @@ form.addEventListener('submit', async (e) => {
     formData.append('beneficiary_description', document.getElementById('ben-description').value);
     formData.append('beneficiary_address', document.getElementById('ben-location').value);
 
-    const images = document.getElementById('camp-images').files;
-    for (let i = 0; i < images.length; i++) {
-        formData.append('images', images[i]);
+    // Validate max limits before sending
+    if (allImages.length > 5) {
+        alert("Max 5 images allowed.");
+        return;
     }
-    const files = document.getElementById('camp-files').files;
-    for (let i = 0; i < files.length; i++) {
-        formData.append('files', files[i]);
+    if (allFiles.length > 2) {
+        alert("Max 3 files allowed.");
+        return;
+    }
+
+    // Append images
+    for (let img of allImages) {
+        formData.append("images", img);
+    }
+
+    // Append files
+    for (let f of allFiles) {
+        formData.append("files", f);
     }
 
     try {
@@ -32,23 +85,23 @@ form.addEventListener('submit', async (e) => {
 
         const res = await fetch('https://crowdfundingbackend-1.onrender.com/api/campaignform', {
             method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}` 
-            },
+            headers: { 'Authorization': `Bearer ${token}` },
             body: formData
         });
 
         const result = await res.json();
         console.log(result);
 
-        if(res.ok){
+        if (res.ok) {
             alert(`Campaign Created! ID: ${result.campaign_id}`);
             form.reset();
+            allImages = [];
+            allFiles = [];
         } else {
             alert(`Error: ${result.message}`);
         }
 
-    } catch(err) {
+    } catch (err) {
         alert(`Server Error: ${err.message}`);
     }
 });
