@@ -274,6 +274,17 @@ main{
   width: 60%;
   border-radius: 5px;
 }
+.no-campaigns {
+  grid-column: 1 / -1;   /* span full grid width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 30px;
+  font-size: 26px;
+  color: #0A5251;
+}
+
 
 /* shimmer effect */
 .skeleton-card::after,

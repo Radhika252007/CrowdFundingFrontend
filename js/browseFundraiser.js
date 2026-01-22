@@ -12,13 +12,20 @@ function renderCampaigns(campaigns) {
     return;
   }
 
-  const filtered = campaigns.filter(c => c.status?.trim().toLowerCase() === "approved");
+   const today = new Date();
+    const filtered = campaigns.filter(
+      (campaign) => new Date(campaign.end_date) > today && campaign.status === "Approved"
+    );
+    
 
   if (filtered.length === 0) {
-    topContainer.
-    topContainer.innerHTML = "<h1 style='text-align:center; margin:30px; font-size:26px; color:#0A5251'>No campaigns found.</h1>";
-    return;
-  }
+  topContainer.innerHTML = `
+    <div class="no-campaigns">
+      No campaigns found.
+    </div>
+  `;
+  return;
+}
 
   const topCampaigns = filtered.slice(0, 6);
   const remainingCampaigns = filtered.slice(6);

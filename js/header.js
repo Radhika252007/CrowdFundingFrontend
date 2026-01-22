@@ -20,8 +20,8 @@ async function refreshAccessToken() {
             localStorage.setItem("accessToken", data.accessToken);
             return data.accessToken;
         } else {
-            console.error("Token refresh failed:", data.message); // <-- use data.message
-            // Clear tokens and redirect to login
+            console.error("Token refresh failed:", data.message); 
+            
             localStorage.removeItem("accessToken");
             localStorage.removeItem("refreshToken");
             window.location.href = "/components/Login-SignIn.html";
